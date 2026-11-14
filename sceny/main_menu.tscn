@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://dkgwewbsy4jnh"]
 
 [ext_resource type="FontFile" uid="uid://cyvtx8cldexhl" path="res://assety/fonts/augiepixel.ttf" id="1_ajb5y"]
+[ext_resource type="Script" uid="uid://ptq0inqefgi7" path="res://sceny/main_menu.gd" id="1_hignl"]
+[ext_resource type="Texture2D" uid="uid://dkabo3utv6q7v" path="res://assety/main_menu/menu button.png" id="2_63vf4"]
+[ext_resource type="Texture2D" uid="uid://huteuedufhd7" path="res://assety/main_menu/menu button_pressed.png" id="4_mkowe"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3ioeb"]
 font = ExtResource("1_ajb5y")
@@ -23,6 +26,7 @@ offset_right = -567.0
 offset_bottom = -301.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_hignl")
 
 [node name="Main name" type="Label" parent="." unique_id=1016672294]
 layout_mode = 0
@@ -45,6 +49,7 @@ offset_right = 1179.0
 offset_bottom = 673.0
 
 [node name="RUN LABEL" type="Label" parent="." unique_id=1192259772]
+z_index = 1
 layout_mode = 0
 offset_left = 269.0
 offset_top = 328.0
@@ -55,6 +60,7 @@ label_settings = SubResource("LabelSettings_5ejix")
 horizontal_alignment = 1
 
 [node name="EXIT LABEL" type="Label" parent="." unique_id=1553486503]
+z_index = 1
 layout_mode = 0
 offset_left = 269.0
 offset_top = 481.0
@@ -64,12 +70,25 @@ text = "EXIT"
 label_settings = SubResource("LabelSettings_5ejix")
 horizontal_alignment = 1
 
-[node name="RUN button" type="TextureButton" parent="." unique_id=17276231]
+[node name="RUN button" type="TextureButton" parent="." unique_id=545130987]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 212.0
+offset_top = 320.0
+offset_right = 308.0
+offset_bottom = 336.0
+scale = Vector2(7.3999996, 7.3999996)
+texture_normal = ExtResource("2_63vf4")
+texture_pressed = ExtResource("4_mkowe")
 
 [node name="EXIT button" type="TextureButton" parent="." unique_id=417377809]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 213.0
+offset_top = 464.0
+offset_right = 309.0
+offset_bottom = 480.0
+scale = Vector2(7.3999996, 7.3999996)
+texture_normal = ExtResource("2_63vf4")
+texture_pressed = ExtResource("4_mkowe")
+
+[connection signal="pressed" from="RUN button" to="." method="_on_run_button_pressed"]
+[connection signal="pressed" from="EXIT button" to="." method="_on_exit_button_pressed"]
