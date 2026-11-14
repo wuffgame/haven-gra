@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://dyevc08qdlara"]
+
+[ext_resource type="FontFile" uid="uid://cyvtx8cldexhl" path="res://assety/fonts/augiepixel.ttf" id="1_xn2n6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fq6lt"]
+font = ExtResource("1_xn2n6")
+font_size = 152
+font_color = Color(0, 0, 0, 1)
+
+[node name="Safe_exit" type="Control" unique_id=1033913457]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1651422527]
+layout_mode = 0
+offset_left = -25.0
+offset_top = -15.0
+offset_right = 1172.0
+offset_bottom = 680.0
+
+[node name="Main name" type="Label" parent="." unique_id=1890045397]
+layout_mode = 0
+offset_left = 190.0
+offset_top = 104.0
+offset_right = 962.0
+offset_bottom = 551.0
+text = "You can now
+safely exit
+the game!!!"
+label_settings = SubResource("LabelSettings_fq6lt")
+horizontal_alignment = 1
