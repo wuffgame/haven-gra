@@ -7,7 +7,7 @@ var current_state = State.MOVING
 @export var max_drag_distance: float = 220.0
 @export var max_power: float = 1400.0
 
-@export var gravity: float = 1200.0
+@export var gravity: float = 700.0
 
 @export var aiming_slowmo_factor: float = 0.12
 
