@@ -3,12 +3,9 @@ extends CharacterBody2D
 enum State { AIMING, MOVING }
 var current_state = State.MOVING
 
-
 @export var max_drag_distance: float = 220.0
 @export var max_power: float = 1400.0
-
 @export var gravity: float = 700.0
-
 @export var aiming_slowmo_factor: float = 0.12
 
 @export var normal_zoom: Vector2 = Vector2(1.0, 1.0)
@@ -17,6 +14,7 @@ var current_state = State.MOVING
 
 var drag_start_pos: Vector2 = Vector2.ZERO
 var launch_vector: Vector2 = Vector2.ZERO
+var original_scale: Vector2 = Vector2(1, 1)
 var dots: Array[ColorRect] = []
 
 @onready var drag_line: Line2D = $Line2D
@@ -25,6 +23,7 @@ var dots: Array[ColorRect] = []
 func _ready() -> void:
 	drag_line.visible = false
 	create_aim_dots()
+	original_scale = scale
 	velocity = Vector2(400, -300)
 
 func create_aim_dots() -> void:
@@ -48,16 +47,12 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _process(delta: float) -> void:
 	if current_state == State.AIMING:
-		
 		drag_start_pos = global_position
-		
 		var current_mouse_pos = get_global_mouse_position()
 		var raw_drag = drag_start_pos - current_mouse_pos
 		launch_vector = raw_drag.limit_length(max_drag_distance)
-		
 		update_aim_visuals()
 
-	
 	var target_zoom = normal_zoom
 	if current_state == State.AIMING:
 		var pull_ratio = launch_vector.length() / max_drag_distance
@@ -79,12 +74,9 @@ func update_aim_visuals() -> void:
 
 func shoot() -> void:
 	hide_aim_visuals()
-	
 	var pull_ratio = launch_vector.length() / max_drag_distance
 	if pull_ratio > 0.05:
-		
 		velocity = launch_vector.normalized() * (pull_ratio * max_power)
-	
 	current_state = State.MOVING
 
 func hide_aim_visuals() -> void:
@@ -92,24 +84,40 @@ func hide_aim_visuals() -> void:
 	for dot in dots:
 		dot.visible = false
 
+func play_squash_animation(hit_normal: Vector2) -> void:
+	var tween = create_tween().set_parallel(false)
+	var squash_scale = Vector2(1.3, 0.7)
+	
+	if abs(hit_normal.x) > 0.5:
+		squash_scale = Vector2(0.7, 1.3)
+	else:
+		squash_scale = Vector2(1.3, 0.7)
+		
+	scale = squash_scale * original_scale
+	tween.tween_property(self, "scale", original_scale, 0.25)\
+		.set_trans(Tween.TRANS_BACK)\
+		.set_ease(Tween.EASE_OUT)
+
+func handle_collision(collision: KinematicCollision2D) -> void:
+	var normal = collision.get_normal()
+	velocity = velocity.bounce(normal) * 0.85
+	play_squash_animation(normal)
+	
+	var collider = collision.get_collider()
+	if collider:
+		if collider.is_in_group("gems") and collider.has_method("collect"):
+			collider.collect()
+
 func _physics_process(delta: float) -> void:
 	if current_state == State.MOVING:
-		
 		velocity.y += gravity * delta
-		
 		var collision = move_and_collide(velocity * delta)
 		if collision:
-			velocity = velocity.bounce(collision.get_normal()) * 0.85
-			
-			var collider = collision.get_collider()
-			if collider.is_in_group("gems"):
-				collider.collect()
+			handle_collision(collision)
 				
 	elif current_state == State.AIMING:
-		
 		velocity.y += (gravity * aiming_slowmo_factor) * delta
 		var slow_velocity = velocity * aiming_slowmo_factor
-		
 		var collision = move_and_collide(slow_velocity * delta)
 		if collision:
-			velocity = velocity.bounce(collision.get_normal()) * 0.85
+			handle_collision(collision)

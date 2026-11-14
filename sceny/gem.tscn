@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://c1gnjyoana0u7"]
+
+[ext_resource type="Script" uid="uid://cfrs3s4ek5hyu" path="res://skrypty/gem.gd" id="1_bh5pp"]
+[ext_resource type="Texture2D" uid="uid://dpgcg5bu3kcgh" path="res://assety/game/gem.png" id="2_ldjj7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_epuwg"]
+radius = 27.89265
+
+[node name="Area2D" type="Area2D" unique_id=796537527 groups=["gems"]]
+script = ExtResource("1_bh5pp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2129784067]
+shape = SubResource("CircleShape2D_epuwg")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=570916508]
+scale = Vector2(3.0869708, 3.0869708)
+texture = ExtResource("2_ldjj7")
