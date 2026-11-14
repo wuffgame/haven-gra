@@ -17,8 +17,8 @@ var launch_vector: Vector2 = Vector2.ZERO
 var original_scale: Vector2 = Vector2(1, 1)
 var dots: Array[ColorRect] = []
 
-var total_gems: int = 0
-var collected_gems: int = 0
+var total_gems: int = 0 # ile w danym lvl
+var collected_gems: int = 0 # ile zebranych
 var max_moves: int = 0
 var current_moves: int = max_moves
 
@@ -37,8 +37,11 @@ func _ready() -> void:
 	if Global:
 		max_moves = Global.max_moves
 		current_moves = max_moves
+		total_gems = Global.total_gems
 	if move_label:
 		move_label.text = str(current_moves - 1) + "/" + str(max_moves - 1)
+	if gam_label:
+		gam_label.text = str(collected_gems)
 	
 	call_deferred("count_gems_on_level")
 
@@ -126,6 +129,7 @@ func handle_collision(collision: KinematicCollision2D) -> void:
 func _on_collector_hitbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("gems"):
 		collected_gems += 1
+		update_gems()
 		
 		
 		var gem_tween = create_tween().set_parallel(true)
@@ -133,11 +137,6 @@ func _on_collector_hitbox_area_entered(area: Area2D) -> void:
 		gem_tween.tween_property(area, "modulate:a", 0.0, 0.15)
 		gem_tween.chain().tween_callback(area.queue_free)
 		
-		if collected_gems >= total_gems:
-			win_level()
-
-func win_level() -> void:
-	pass
 
 func _physics_process(delta: float) -> void:
 	if current_state == State.MOVING:
@@ -145,7 +144,7 @@ func _physics_process(delta: float) -> void:
 		var collision = move_and_collide(velocity * delta)
 		if collision:
 			handle_collision(collision)
-				
+
 	elif current_state == State.AIMING:
 		velocity.y += (gravity * aiming_slowmo_factor) * delta
 		var slow_velocity = velocity * aiming_slowmo_factor
@@ -158,3 +157,8 @@ func update_moves() -> void:
 	move_label.text = str(current_moves - 1) + "/" + str(max_moves - 1)
 	if current_moves <= 0:
 		get_tree().reload_current_scene()
+
+func update_gems() -> void:
+	gam_label.text = str(collected_gems)
+	if collected_gems >= total_gems:
+		get_tree().change_scene_to_file("res://sceny/level2.tscn")
