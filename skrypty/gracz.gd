@@ -18,7 +18,7 @@ var original_scale: Vector2 = Vector2(1, 1)
 var dots: Array[ColorRect] = []
 
 var total_gems: int = 0 # ile w danym lvl
-var collected_gems: int = 0 # ile zebranych
+var collected_gems: int = Global.collected_gems # ile zebranych
 var max_moves: int = 0
 var current_moves: int = max_moves
 
@@ -160,6 +160,7 @@ func update_moves() -> void:
 
 func update_gems() -> void:
 	gam_label.text = str(collected_gems)
+	Global.collected_gems = collected_gems
 	if collected_gems >= total_gems:
 		Global.lvl_number += 1
 		var _next_scene = "res://sceny/lvl_" + str(Global.lvl_number) + ".tscn"
