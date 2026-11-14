@@ -6,6 +6,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_epuwg"]
 radius = 17.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_k7ey5"]
+radius = 22.022715
+
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=944777820]
 script = ExtResource("1_7iwne")
 
@@ -20,3 +23,10 @@ shape = SubResource("CircleShape2D_epuwg")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2087196818]
 zoom = Vector2(1.3, 1.3)
+
+[node name="CollectorHitbox" type="Area2D" parent="." unique_id=812786525]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectorHitbox" unique_id=1115291551]
+shape = SubResource("CircleShape2D_k7ey5")
+
+[connection signal="area_entered" from="CollectorHitbox" to="." method="_on_collector_hitbox_area_entered"]

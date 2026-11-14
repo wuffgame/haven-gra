@@ -17,6 +17,9 @@ var launch_vector: Vector2 = Vector2.ZERO
 var original_scale: Vector2 = Vector2(1, 1)
 var dots: Array[ColorRect] = []
 
+var total_gems: int = 0
+var collected_gems: int = 0
+
 @onready var drag_line: Line2D = $Line2D
 @onready var camera: Camera2D = $Camera2D
 
@@ -25,6 +28,11 @@ func _ready() -> void:
 	create_aim_dots()
 	original_scale = scale
 	velocity = Vector2(400, -300)
+	
+	call_deferred("count_gems_on_level")
+
+func count_gems_on_level() -> void:
+	total_gems = get_tree().get_nodes_in_group("gems").size()
 
 func create_aim_dots() -> void:
 	for i in range(8):
@@ -102,6 +110,22 @@ func handle_collision(collision: KinematicCollision2D) -> void:
 	var normal = collision.get_normal()
 	velocity = velocity.bounce(normal) * 0.85
 	play_squash_animation(normal)
+
+func _on_collector_hitbox_area_entered(area: Area2D) -> void:
+	if area.is_in_group("gems"):
+		collected_gems += 1
+		
+		
+		var gem_tween = create_tween().set_parallel(true)
+		gem_tween.tween_property(area, "scale", Vector2(1.5, 1.5), 0.15)
+		gem_tween.tween_property(area, "modulate:a", 0.0, 0.15)
+		gem_tween.chain().tween_callback(area.queue_free)
+		
+		if collected_gems >= total_gems:
+			win_level()
+
+func win_level() -> void:
+	pass
 
 func _physics_process(delta: float) -> void:
 	if current_state == State.MOVING:
