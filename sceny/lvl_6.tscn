@@ -1,0 +1,157 @@
+[gd_scene format=4 uid="uid://bkyu6lyrw147r"]
+
+[ext_resource type="Texture2D" uid="uid://c7jirc0mle4gw" path="res://assety/game/tufftileset.png" id="1_5qxxq"]
+[ext_resource type="Script" uid="uid://dksoo60jherd4" path="res://skrypty/lvl_6.gd" id="1_ob01f"]
+[ext_resource type="Texture2D" uid="uid://b21ub23t2266f" path="res://assety/game/bloczek.png" id="2_1vbty"]
+[ext_resource type="PackedScene" uid="uid://5c4ks61uvlcr" path="res://sceny/gracz.tscn" id="3_1vbty"]
+[ext_resource type="PackedScene" uid="uid://c1gnjyoana0u7" path="res://sceny/gem.tscn" id="5_2leok"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ob01f"]
+texture = ExtResource("1_5qxxq")
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:1/0 = 0
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:2/0 = 0
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:4/0 = 0
+2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:4/0 = 0
+3:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:4/0 = 0
+4:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:6/0 = 0
+1:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:6/0 = 0
+2:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:6/0 = 0
+3:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:6/0 = 0
+4:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:3/0 = 0
+6:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_2leok"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_ob01f")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vi8o5"]
+size = Vector2(87.50394, 328.0487)
+
+[sub_resource type="Animation" id="Animation_5qxxq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.039535582]
+}
+
+[sub_resource type="Animation" id="Animation_1vbty"]
+resource_name = "rotate"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.039535582, 1.5364931]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ob01f"]
+_data = {
+&"RESET": SubResource("Animation_5qxxq"),
+&"rotate": SubResource("Animation_1vbty")
+}
+
+[node name="lvl6" type="Node2D" unique_id=884408973]
+script = ExtResource("1_ob01f")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=255907359]
+scale = Vector2(2.4674845, 2.4674845)
+tile_map_data = PackedByteArray("AAD7//v/AAADAAEAAAD8//v/AAADAAQAAAD9//v/AAADAAQAAAD+//v/AAADAAQAAAD///v/AAADAAQAAAAAAPv/AAADAAQAAAABAPv/AAADAAQAAAACAPv/AAADAAQAAAADAPv/AAADAAQAAAAEAPv/AAADAAQAAAAFAPv/AAADAAQAAAAGAPv/AAADAAQAAAAHAPv/AAADAAQAAAAIAPv/AAADAAQAAAAJAPv/AAADAAQAAAAKAPv/AAADAAQAAAALAPv/AAADAAQAAAAMAPv/AAADAAQAAAANAPv/AAADAAQAAAAOAPv/AAADAAQAAAAPAPv/AAADAAQAAAAQAPv/AAADAAQAAAARAPv/AAADAAQAAAASAPv/AAADAAQAAAATAPv/AAADAAQAAAAUAPv/AAADAAQAAAAVAPv/AAADAAQAAAAWAPv/AAADAAQAAAAXAPv/AAADAAQAAAAYAPv/AAAEAAEAAAAYAPz/AAAGAAEAAAAYAP3/AAAGAAEAAAAYAP7/AAAGAAEAAAAYAP//AAAGAAEAAAAYAAAAAAAGAAEAAAAYAAEAAAAGAAEAAAAYAAIAAAAGAAEAAAAYAAMAAAAGAAEAAAAYAAQAAAAGAAEAAAAYAAUAAAAGAAEAAAAYAAYAAAAGAAEAAAAYAAcAAAAEAAYAAAAYAAgAAAAEAAYAAAAYAAkAAAAGAAEAAAAYAAoAAAAGAAEAAAAYAAsAAAAGAAEAAAAYAAwAAAAGAAEAAAAYAA0AAAAGAAEAAAAYAA4AAAAGAAEAAAAYAA8AAAAEAAIAAAD7/w8AAAADAAIAAAAXAA8AAAADAAQAAAAWAA8AAAADAAQAAAAVAA8AAAADAAQAAAAUAA8AAAADAAQAAAATAA8AAAADAAQAAAASAA8AAAADAAQAAAARAA8AAAADAAQAAAAQAA8AAAADAAQAAAAPAA8AAAADAAQAAAAOAA8AAAADAAQAAAANAA8AAAADAAQAAAAMAA8AAAADAAQAAAALAA8AAAADAAQAAAAKAA8AAAADAAQAAAAJAA8AAAADAAQAAAAIAA8AAAADAAQAAAAHAA8AAAADAAQAAAAGAA8AAAADAAQAAAAFAA8AAAACAAYAAAAEAA8AAAACAAYAAAADAA8AAAACAAYAAAACAA8AAAADAAQAAAABAA8AAAADAAQAAAAAAA8AAAADAAQAAAD//w8AAAADAAQAAAD+/w8AAAADAAQAAAD9/w8AAAADAAQAAAD8/w8AAAADAAQAAAD7//z/AAAGAAEAAAD7//3/AAAGAAEAAAD7//7/AAAGAAEAAAD7////AAAGAAEAAAD7/wAAAAAGAAEAAAD7/wEAAAAGAAEAAAD7/wIAAAAGAAEAAAD7/wMAAAAGAAEAAAD7/wQAAAAGAAEAAAD7/wUAAAAGAAEAAAD7/wYAAAAGAAEAAAD7/wcAAAAGAAEAAAD7/wgAAAAGAAEAAAD7/wkAAAAGAAEAAAD7/woAAAAGAAEAAAD7/wsAAAAGAAEAAAD7/wwAAAAGAAEAAAD7/w0AAAAGAAEAAAD7/w4AAAAGAAEAAAAPAAcAAAADAAEAAAAQAAcAAAADAAYAAAARAAcAAAADAAYAAAASAAcAAAADAAYAAAATAAcAAAADAAYAAAAUAAcAAAADAAYAAAAVAAcAAAADAAYAAAAWAAcAAAADAAYAAAAXAAcAAAADAAYAAAAPAAgAAAADAAIAAAAQAAgAAAACAAYAAAARAAgAAAACAAYAAAASAAgAAAACAAYAAAATAAgAAAACAAYAAAAUAAgAAAACAAYAAAAVAAgAAAACAAYAAAAWAAgAAAACAAYAAAAXAAgAAAACAAYAAAADAAwAAAADAAEAAAAFAAwAAAAEAAEAAAADAA0AAAABAAYAAAADAA4AAAABAAYAAAAFAA0AAAAEAAYAAAAFAA4AAAAEAAYAAAAEAA0AAAAGAAMAAAAEAA4AAAAGAAMAAAAEAAwAAAADAAYAAAADAAIAAAADAAEAAAAEAAIAAAADAAYAAAAFAAIAAAADAAYAAAAGAAIAAAAEAAEAAAADAAMAAAADAAIAAAAEAAMAAAACAAYAAAAFAAMAAAACAAYAAAAGAAMAAAAEAAIAAAA=")
+tile_set = SubResource("TileSet_2leok")
+
+[node name="Bloczek" type="StaticBody2D" parent="." unique_id=1679426144]
+position = Vector2(533, 442)
+rotation = 0.5959538
+scale = Vector2(0.9936802, 0.9936802)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bloczek" unique_id=894544909]
+texture = ExtResource("2_1vbty")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bloczek" unique_id=497247693]
+position = Vector2(0.71261597, 0.2956543)
+shape = SubResource("RectangleShape2D_vi8o5")
+
+[node name="Wiatrak" type="AnimatableBody2D" parent="." unique_id=740150377]
+position = Vector2(480.99994, 113)
+rotation = -0.039535582
+scale = Vector2(0.96698546, 0.96698546)
+
+[node name="Sprite2D" type="Sprite2D" parent="Wiatrak" unique_id=191270023]
+rotation = 1.610854
+texture = ExtResource("2_1vbty")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wiatrak" unique_id=622629743]
+position = Vector2(0.71261597, 0.2956543)
+rotation = 1.610854
+shape = SubResource("RectangleShape2D_vi8o5")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Wiatrak" unique_id=1652349987]
+position = Vector2(1.1017761, 1.1925325)
+rotation = 0.041258167
+texture = ExtResource("2_1vbty")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Wiatrak" unique_id=84990451]
+position = Vector2(2.2035217, 2.3850994)
+rotation = -3.0989788
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_vi8o5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Wiatrak" unique_id=960848019]
+libraries/ = SubResource("AnimationLibrary_ob01f")
+autoplay = &"rotate"
+
+[node name="Bloczek3" type="StaticBody2D" parent="." unique_id=1533090698]
+position = Vector2(-24.000015, 447)
+rotation = -0.6584672
+scale = Vector2(0.9936802, 0.9936802)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bloczek3" unique_id=1560090320]
+texture = ExtResource("2_1vbty")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bloczek3" unique_id=1689005255]
+position = Vector2(0.71261597, 0.2956543)
+shape = SubResource("RectangleShape2D_vi8o5")
+
+[node name="CharacterBody2D" parent="." unique_id=944777820 instance=ExtResource("3_1vbty")]
+position = Vector2(785, 167)
+scale = Vector2(1.4413013, 1.4413013)
+
+[node name="Area2D" parent="." unique_id=796537527 instance=ExtResource("5_2leok")]
+position = Vector2(325, 504)
+
+[node name="Area2D2" parent="." unique_id=1431191581 instance=ExtResource("5_2leok")]
+position = Vector2(669, 213)
+
+[node name="Area2D3" parent="." unique_id=270777849 instance=ExtResource("5_2leok")]
+position = Vector2(189, -17)
