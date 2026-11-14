@@ -7,6 +7,7 @@ var current_state = State.MOVING
 @export var max_power: float = 1400.0
 @export var gravity: float = 700.0
 @export var aiming_slowmo_factor: float = 0.12
+@export var slowmo_duration: float = 3.0
 
 @export var normal_zoom: Vector2 = Vector2(1.0, 1.0)
 @export var max_aim_zoom: Vector2 = Vector2(1.5, 1.5)
@@ -16,6 +17,8 @@ var drag_start_pos: Vector2 = Vector2.ZERO
 var launch_vector: Vector2 = Vector2.ZERO
 var original_scale: Vector2 = Vector2(1, 1)
 var dots: Array[ColorRect] = []
+
+var aim_timer: float = 0.0
 
 var total_gems: int = 0 # ile w danym lvl
 var collected_gems: int = Global.collected_gems # ile zebranych
@@ -63,6 +66,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
 			current_state = State.AIMING
+			aim_timer = 0.0
 			drag_start_pos = global_position
 			drag_line.visible = true
 		elif current_state == State.AIMING:
@@ -70,6 +74,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _process(delta: float) -> void:
 	if current_state == State.AIMING:
+		aim_timer += delta
 		drag_start_pos = global_position
 		var current_mouse_pos = get_global_mouse_position()
 		var raw_drag = drag_start_pos - current_mouse_pos
@@ -78,8 +83,12 @@ func _process(delta: float) -> void:
 
 	var target_zoom = normal_zoom
 	if current_state == State.AIMING:
+		var progress = min(aim_timer / slowmo_duration, 1.0)
+		var current_slowmo = lerp(aiming_slowmo_factor, 1.0, progress)
+		
 		var pull_ratio = launch_vector.length() / max_drag_distance
-		target_zoom = normal_zoom.lerp(max_aim_zoom, float(pull_ratio))
+		var effective_max_zoom = normal_zoom.lerp(max_aim_zoom, pull_ratio)
+		target_zoom = effective_max_zoom.lerp(normal_zoom, progress)
 	
 	if camera:
 		camera.zoom = camera.zoom.lerp(target_zoom, zoom_speed * delta)
@@ -145,8 +154,11 @@ func _physics_process(delta: float) -> void:
 			handle_collision(collision)
 
 	elif current_state == State.AIMING:
-		velocity.y += (gravity * aiming_slowmo_factor) * delta
-		var slow_velocity = velocity * aiming_slowmo_factor
+		var progress = min(aim_timer / slowmo_duration, 1.0)
+		var current_slowmo = lerp(aiming_slowmo_factor, 1.0, progress)
+		
+		velocity.y += (gravity * current_slowmo) * delta
+		var slow_velocity = velocity * current_slowmo
 		var collision = move_and_collide(slow_velocity * delta)
 		if collision:
 			handle_collision(collision)
