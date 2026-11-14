@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://dkgwewbsy4jnh"]
+
+[ext_resource type="FontFile" uid="uid://cyvtx8cldexhl" path="res://assety/fonts/augiepixel.ttf" id="1_ajb5y"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3ioeb"]
+font = ExtResource("1_ajb5y")
+font_size = 152
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5ejix"]
+font = ExtResource("1_ajb5y")
+font_size = 107
+font_color = Color(0, 0, 0, 1)
+
+[node name="Main menu" type="Control" unique_id=537924879]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -567.0
+offset_top = -301.0
+offset_right = -567.0
+offset_bottom = -301.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Main name" type="Label" parent="." unique_id=1016672294]
+layout_mode = 0
+offset_left = 173.0
+offset_top = 68.0
+offset_right = 945.0
+offset_bottom = 215.0
+text = "Hollow Balls"
+label_settings = SubResource("LabelSettings_3ioeb")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=985860029]
+position = Vector2(576, 324)
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1150093412]
+z_index = -1
+layout_mode = 0
+offset_left = -46.0
+offset_top = -36.0
+offset_right = 1179.0
+offset_bottom = 673.0
+
+[node name="RUN LABEL" type="Label" parent="." unique_id=1192259772]
+layout_mode = 0
+offset_left = 269.0
+offset_top = 328.0
+offset_right = 867.0
+offset_bottom = 432.0
+text = "RUN"
+label_settings = SubResource("LabelSettings_5ejix")
+horizontal_alignment = 1
+
+[node name="EXIT LABEL" type="Label" parent="." unique_id=1553486503]
+layout_mode = 0
+offset_left = 269.0
+offset_top = 481.0
+offset_right = 867.0
+offset_bottom = 585.0
+text = "EXIT"
+label_settings = SubResource("LabelSettings_5ejix")
+horizontal_alignment = 1
+
+[node name="RUN button" type="TextureButton" parent="." unique_id=17276231]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="EXIT button" type="TextureButton" parent="." unique_id=417377809]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
