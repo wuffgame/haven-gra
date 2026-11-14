@@ -102,11 +102,6 @@ func handle_collision(collision: KinematicCollision2D) -> void:
 	var normal = collision.get_normal()
 	velocity = velocity.bounce(normal) * 0.85
 	play_squash_animation(normal)
-	
-	var collider = collision.get_collider()
-	if collider:
-		if collider.is_in_group("gems") and collider.has_method("collect"):
-			collider.collect()
 
 func _physics_process(delta: float) -> void:
 	if current_state == State.MOVING:
