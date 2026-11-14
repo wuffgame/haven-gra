@@ -1,0 +1,63 @@
+[gd_scene format=4 uid="uid://nibgjfhnpkjv"]
+
+[ext_resource type="Texture2D" uid="uid://c7jirc0mle4gw" path="res://assety/game/tufftileset.png" id="1_mv4rw"]
+[ext_resource type="PackedScene" uid="uid://5c4ks61uvlcr" path="res://sceny/gracz.tscn" id="2_07hwp"]
+[ext_resource type="PackedScene" uid="uid://c1gnjyoana0u7" path="res://sceny/gem.tscn" id="3_18hrk"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mnvbm"]
+texture = ExtResource("1_mv4rw")
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:1/0 = 0
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:2/0 = 0
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:4/0 = 0
+2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:4/0 = 0
+3:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:4/0 = 0
+4:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:6/0 = 0
+1:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:6/0 = 0
+2:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:6/0 = 0
+3:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:6/0 = 0
+4:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:3/0 = 0
+6:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_yobx6"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_mnvbm")
+
+[node name="lvl3" type="Node2D" unique_id=1709911704]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1628683344]
+scale = Vector2(2.4674845, 2.4674845)
+tile_map_data = PackedByteArray("AAD7//v/AAADAAEAAAD8//v/AAADAAQAAAD9//v/AAADAAQAAAD+//v/AAADAAQAAAD///v/AAADAAQAAAAAAPv/AAADAAQAAAABAPv/AAADAAQAAAACAPv/AAADAAQAAAADAPv/AAADAAQAAAAEAPv/AAADAAQAAAAFAPv/AAADAAQAAAAGAPv/AAADAAQAAAAHAPv/AAADAAQAAAAIAPv/AAADAAQAAAAJAPv/AAADAAQAAAAKAPv/AAADAAQAAAALAPv/AAADAAQAAAAMAPv/AAADAAQAAAANAPv/AAADAAQAAAAOAPv/AAADAAQAAAAPAPv/AAADAAQAAAAQAPv/AAADAAQAAAARAPv/AAADAAQAAAASAPv/AAADAAQAAAATAPv/AAADAAQAAAAUAPv/AAADAAQAAAAVAPv/AAADAAQAAAAWAPv/AAADAAQAAAAXAPv/AAADAAQAAAAYAPv/AAAEAAEAAAAYAPz/AAAGAAEAAAAYAP3/AAAGAAEAAAAYAP7/AAAGAAEAAAAYAP//AAAGAAEAAAAYAAAAAAAGAAEAAAAYAAEAAAAGAAEAAAAYAAIAAAAGAAEAAAAYAAMAAAAGAAEAAAAYAAQAAAAGAAEAAAAYAAUAAAAGAAEAAAAYAAYAAAAGAAEAAAAYAAcAAAAGAAEAAAAYAAgAAAAGAAEAAAAYAAkAAAAGAAEAAAAYAAoAAAAGAAEAAAAYAAsAAAAGAAEAAAAYAAwAAAAGAAEAAAAYAA0AAAAGAAEAAAAYAA4AAAAGAAEAAAAYAA8AAAAEAAIAAAD7/w8AAAADAAIAAAAXAA8AAAADAAQAAAAWAA8AAAADAAQAAAAVAA8AAAADAAQAAAAUAA8AAAADAAQAAAATAA8AAAADAAQAAAASAA8AAAADAAQAAAARAA8AAAADAAQAAAAQAA8AAAADAAQAAAAPAA8AAAADAAQAAAAOAA8AAAADAAQAAAANAA8AAAADAAQAAAAMAA8AAAADAAQAAAALAA8AAAACAAYAAAAKAA8AAAACAAYAAAAJAA8AAAACAAYAAAAIAA8AAAADAAQAAAAHAA8AAAADAAQAAAAGAA8AAAADAAQAAAAFAA8AAAADAAQAAAAEAA8AAAADAAQAAAADAA8AAAADAAQAAAACAA8AAAADAAQAAAABAA8AAAADAAQAAAAAAA8AAAADAAQAAAD//w8AAAADAAQAAAD+/w8AAAADAAQAAAD9/w8AAAADAAQAAAD8/w8AAAADAAQAAAD7//z/AAAGAAEAAAD7//3/AAAGAAEAAAD7//7/AAAGAAEAAAD7////AAAGAAEAAAD7/wAAAAAGAAEAAAD7/wEAAAAGAAEAAAD7/wIAAAAGAAEAAAD7/wMAAAAGAAEAAAD7/wQAAAAGAAEAAAD7/wUAAAAGAAEAAAD7/wYAAAAGAAEAAAD7/wcAAAAGAAEAAAD7/wgAAAAGAAEAAAD7/wkAAAAGAAEAAAD7/woAAAAGAAEAAAD7/wsAAAAGAAEAAAD7/wwAAAAGAAEAAAD7/w0AAAAGAAEAAAD7/w4AAAAGAAEAAAAJAAgAAAADAAYAAAAKAAgAAAADAAYAAAALAAgAAAADAAYAAAAMAAgAAAADAAQAAAAJAAoAAAABAAYAAAAJAAsAAAABAAYAAAAJAAwAAAABAAYAAAAJAA0AAAABAAYAAAAJAA4AAAABAAYAAAAKAAkAAAAGAAMAAAAKAAoAAAAGAAMAAAAKAAsAAAAGAAMAAAAKAAwAAAAGAAMAAAAKAA0AAAAGAAMAAAAKAA4AAAAGAAMAAAALAAoAAAAEAAYAAAALAAsAAAAEAAYAAAALAAwAAAAEAAYAAAALAA0AAAAEAAYAAAALAA4AAAAEAAYAAAANAAgAAAAEAAQAAAAHAAgAAAACAAQAAAAIAAgAAAADAAQAAAAJAAkAAAABAAYAAAALAAkAAAAEAAYAAAA=")
+tile_set = SubResource("TileSet_yobx6")
+
+[node name="CharacterBody2D" parent="." unique_id=944777820 instance=ExtResource("2_07hwp")]
+position = Vector2(413, 283.00003)
+scale = Vector2(1.4029465, 1.4029465)
+
+[node name="Area2D" parent="." unique_id=796537527 instance=ExtResource("3_18hrk")]
+position = Vector2(797, 318)
+
+[node name="Area2D2" parent="." unique_id=2038309284 instance=ExtResource("3_18hrk")]
+position = Vector2(-56, 309)
+
+[node name="Area2D3" parent="." unique_id=1765667925 instance=ExtResource("3_18hrk")]
+position = Vector2(163, 22)
+
+[node name="Area2D4" parent="." unique_id=1147315988 instance=ExtResource("3_18hrk")]
+position = Vector2(620, 20)
