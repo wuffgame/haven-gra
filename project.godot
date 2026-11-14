@@ -15,10 +15,6 @@ run/main_scene="uid://bnfpinw7cq38f"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
-[autoload]
-
-gamemanager="*uid://da1h5ye2weqb4"
-
 [display]
 
 window/stretch/mode="canvas_items"
