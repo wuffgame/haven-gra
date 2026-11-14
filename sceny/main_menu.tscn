@@ -4,7 +4,8 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_3ioeb"]
 font = ExtResource("1_ajb5y")
-font_size = 107
+font_size = 152
+font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_5ejix"]
 font = ExtResource("1_ajb5y")
@@ -24,10 +25,10 @@ grow_vertical = 2
 
 [node name="Main name" type="Label" parent="." unique_id=1016672294]
 layout_mode = 0
-offset_left = 295.0
-offset_top = 98.0
-offset_right = 839.0
-offset_bottom = 201.0
+offset_left = 173.0
+offset_top = 68.0
+offset_right = 945.0
+offset_bottom = 215.0
 text = "Hollow Balls"
 label_settings = SubResource("LabelSettings_3ioeb")
 
@@ -63,3 +64,11 @@ offset_bottom = 104.0
 text = "EXIT"
 label_settings = SubResource("LabelSettings_5ejix")
 horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1150093412]
+z_index = -1
+layout_mode = 0
+offset_left = -46.0
+offset_top = -36.0
+offset_right = 1179.0
+offset_bottom = 673.0
