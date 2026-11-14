@@ -1,11 +1,12 @@
 [gd_scene format=4 uid="uid://bnfpinw7cq38f"]
 
-[ext_resource type="PackedScene" uid="uid://5c4ks61uvlcr" path="res://sceny/gracz.tscn" id="1_mh27j"]
-[ext_resource type="Texture2D" uid="uid://c7jirc0mle4gw" path="res://assety/game/tufftileset.png" id="2_8gesx"]
-[ext_resource type="PackedScene" uid="uid://c1gnjyoana0u7" path="res://sceny/gem.tscn" id="3_8gesx"]
+[ext_resource type="Script" uid="uid://dxnga2vu5tmbl" path="res://sceny/level_1.gd" id="1_g85n8"]
+[ext_resource type="PackedScene" uid="uid://5c4ks61uvlcr" path="res://sceny/gracz.tscn" id="2_w6r10"]
+[ext_resource type="Texture2D" uid="uid://c7jirc0mle4gw" path="res://assety/game/tufftileset.png" id="3_dytq2"]
+[ext_resource type="PackedScene" uid="uid://c1gnjyoana0u7" path="res://sceny/gem.tscn" id="4_hsmbp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yvbnq"]
-texture = ExtResource("2_8gesx")
+texture = ExtResource("3_dytq2")
 1:1/0 = 0
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:1/0 = 0
@@ -30,8 +31,9 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_yvbnq")
 
 [node name="Node2D" type="Node2D" unique_id=133844298]
+script = ExtResource("1_g85n8")
 
-[node name="CharacterBody2D" parent="." unique_id=944777820 instance=ExtResource("1_mh27j")]
+[node name="CharacterBody2D" parent="." unique_id=944777820 instance=ExtResource("2_w6r10")]
 position = Vector2(368.00003, 395.00003)
 scale = Vector2(1.529726, 1.529726)
 
@@ -45,8 +47,8 @@ position = Vector2(382, 216)
 scale = Vector2(0.21246105, 1.0264981)
 zoom = Vector2(1.5, 1.5)
 
-[node name="Area2D" parent="." unique_id=796537527 instance=ExtResource("3_8gesx")]
+[node name="Area2D" parent="." unique_id=796537527 instance=ExtResource("4_hsmbp")]
 position = Vector2(620, 89)
 
-[node name="Area2D2" parent="." unique_id=661757358 instance=ExtResource("3_8gesx")]
+[node name="Area2D2" parent="." unique_id=661757358 instance=ExtResource("4_hsmbp")]
 position = Vector2(72, 11)

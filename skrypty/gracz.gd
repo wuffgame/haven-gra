@@ -19,15 +19,26 @@ var dots: Array[ColorRect] = []
 
 var total_gems: int = 0
 var collected_gems: int = 0
+var max_moves: int = 0
+var current_moves: int = max_moves
 
 @onready var drag_line: Line2D = $Line2D
 @onready var camera: Camera2D = $Camera2D
+@onready var gam_label: Label = $CanvasLayer/ilosc_gemow
+@onready var move_label: Label = $CanvasLayer/ilosc_ruchow
 
 func _ready() -> void:
 	drag_line.visible = false
 	create_aim_dots()
 	original_scale = scale
 	velocity = Vector2(400, -300)
+	
+	await get_tree().create_timer(0.01).timeout
+	if Global:
+		max_moves = Global.max_moves
+		current_moves = max_moves
+	if move_label:
+		move_label.text = str(current_moves - 1) + "/" + str(max_moves - 1)
 	
 	call_deferred("count_gems_on_level")
 
@@ -85,6 +96,7 @@ func shoot() -> void:
 	var pull_ratio = launch_vector.length() / max_drag_distance
 	if pull_ratio > 0.05:
 		velocity = launch_vector.normalized() * (pull_ratio * max_power)
+		update_moves()
 	current_state = State.MOVING
 
 func hide_aim_visuals() -> void:
@@ -100,7 +112,7 @@ func play_squash_animation(hit_normal: Vector2) -> void:
 		squash_scale = Vector2(0.7, 1.3)
 	else:
 		squash_scale = Vector2(1.3, 0.7)
-		
+
 	scale = squash_scale * original_scale
 	tween.tween_property(self, "scale", original_scale, 0.25)\
 		.set_trans(Tween.TRANS_BACK)\
@@ -140,3 +152,9 @@ func _physics_process(delta: float) -> void:
 		var collision = move_and_collide(slow_velocity * delta)
 		if collision:
 			handle_collision(collision)
+			
+func update_moves() -> void:
+	current_moves -= 1
+	move_label.text = str(current_moves - 1) + "/" + str(max_moves - 1)
+	if current_moves <= 0:
+		get_tree().reload_current_scene()
