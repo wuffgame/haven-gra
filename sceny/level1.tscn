@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://bnfpinw7cq38f"]
 
-[ext_resource type="Script" uid="uid://dxnga2vu5tmbl" path="res://sceny/level_1.gd" id="1_g85n8"]
+[ext_resource type="Script" uid="uid://dxnga2vu5tmbl" path="res://skrypty/level_1.gd" id="1_g85n8"]
 [ext_resource type="PackedScene" uid="uid://5c4ks61uvlcr" path="res://sceny/gracz.tscn" id="2_w6r10"]
 [ext_resource type="Texture2D" uid="uid://c7jirc0mle4gw" path="res://assety/game/tufftileset.png" id="3_dytq2"]
 [ext_resource type="PackedScene" uid="uid://c1gnjyoana0u7" path="res://sceny/gem.tscn" id="4_hsmbp"]

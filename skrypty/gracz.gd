@@ -161,4 +161,6 @@ func update_moves() -> void:
 func update_gems() -> void:
 	gam_label.text = str(collected_gems)
 	if collected_gems >= total_gems:
-		get_tree().change_scene_to_file("res://sceny/lvl_2.tscn")
+		Global.lvl_number += 1
+		var _next_scene = "res://sceny/lvl_" + str(Global.lvl_number) + ".tscn"
+		get_tree().change_scene_to_file(_next_scene)
