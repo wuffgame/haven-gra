@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://nibgjfhnpkjv"]
 
+[ext_resource type="Script" uid="uid://bb7cwo0uvxyrl" path="res://sceny/lvl_3.gd" id="1_07hwp"]
 [ext_resource type="Texture2D" uid="uid://c7jirc0mle4gw" path="res://assety/game/tufftileset.png" id="1_mv4rw"]
 [ext_resource type="PackedScene" uid="uid://5c4ks61uvlcr" path="res://sceny/gracz.tscn" id="2_07hwp"]
 [ext_resource type="PackedScene" uid="uid://c1gnjyoana0u7" path="res://sceny/gem.tscn" id="3_18hrk"]
@@ -40,6 +41,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_mnvbm")
 
 [node name="lvl3" type="Node2D" unique_id=1709911704]
+script = ExtResource("1_07hwp")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1628683344]
 scale = Vector2(2.4674845, 2.4674845)

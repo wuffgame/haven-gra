@@ -21,10 +21,11 @@ var total_gems: int = 0 # ile w danym lvl
 var collected_gems: int = Global.collected_gems # ile zebranych
 var max_moves: int = 0
 var current_moves: int = max_moves
+var collected_gems_now: int = 0
 
 @onready var drag_line: Line2D = $Line2D
 @onready var camera: Camera2D = $Camera2D
-@onready var gam_label: Label = $CanvasLayer/ilosc_gemow
+@onready var gam_label: Label = $CanvasLayer/HBoxContainer/ilosc_gemow
 @onready var move_label: Label = $CanvasLayer/ilosc_ruchow
 
 func _ready() -> void:
@@ -128,7 +129,7 @@ func handle_collision(collision: KinematicCollision2D) -> void:
 
 func _on_collector_hitbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("gems"):
-		collected_gems += 1
+		collected_gems_now += 1
 		update_gems()
 		
 		
@@ -159,9 +160,10 @@ func update_moves() -> void:
 		get_tree().reload_current_scene()
 
 func update_gems() -> void:
-	gam_label.text = str(collected_gems)
-	Global.collected_gems = collected_gems
-	if collected_gems >= total_gems:
+	gam_label.text = str(collected_gems + collected_gems_now)
+	if collected_gems_now >= total_gems:
+		collected_gems = collected_gems + collected_gems_now
+		Global.collected_gems = collected_gems
 		Global.lvl_number += 1
 		var _next_scene = "res://sceny/lvl_" + str(Global.lvl_number) + ".tscn"
 		get_tree().change_scene_to_file(_next_scene)
