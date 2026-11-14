@@ -60,8 +60,8 @@ position = Vector2(814, 525)
 scale = Vector2(1.3939259, 1.3939259)
 
 [node name="Bloczek" type="StaticBody2D" parent="." unique_id=1533272599]
-position = Vector2(353.00003, 468)
-rotation = -0.7662773
+position = Vector2(330.00003, 417.00003)
+rotation = -0.93211895
 scale = Vector2(0.8710135, 0.8710135)
 
 [node name="Sprite2D" type="Sprite2D" parent="Bloczek" unique_id=55658427]
