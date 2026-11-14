@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnbmocqyqp0vx"
-path="res://.godot/imported/tufftileset.png-56fcebe6f9eeffb0b5957c0a7b7a5880.ctex"
+uid="uid://dkabo3utv6q7v"
+path="res://.godot/imported/menu button.png-2fc8e6c096795dedd6048d7ef6d02f19.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tufftileset.png"
-dest_files=["res://.godot/imported/tufftileset.png-56fcebe6f9eeffb0b5957c0a7b7a5880.ctex"]
+source_file="res://assety/main_menu/menu button.png"
+dest_files=["res://.godot/imported/menu button.png-2fc8e6c096795dedd6048d7ef6d02f19.ctex"]
 
 [params]
 
