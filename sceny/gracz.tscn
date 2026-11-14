@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://5c4ks61uvlcr"]
+
+[ext_resource type="Script" uid="uid://3d7tu553j8dn" path="res://skrypty/gracz.gd" id="1_7iwne"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_epuwg"]
+radius = 17.029387
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=944777820]
+script = ExtResource("1_7iwne")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=471842505]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2008640470]
+shape = SubResource("CircleShape2D_epuwg")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=1255954146]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2087196818]
+zoom = Vector2(1.3, 1.3)
