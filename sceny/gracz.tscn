@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dpqyo80kw0wnx" path="res://assety/game/ball.png" id="2_40piq"]
 [ext_resource type="FontFile" uid="uid://cyvtx8cldexhl" path="res://assety/fonts/augiepixel.ttf" id="3_8in0d"]
 [ext_resource type="Texture2D" uid="uid://dpgcg5bu3kcgh" path="res://assety/game/gem.png" id="4_l1edu"]
+[ext_resource type="Texture2D" uid="uid://cckpnjuo1vb4p" path="res://assety/game/particle.png" id="5_oap5v"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_epuwg"]
 radius = 17.0
@@ -61,6 +62,12 @@ _data = {
 [sub_resource type="LabelSettings" id="LabelSettings_5ejix"]
 font = ExtResource("3_8in0d")
 font_size = 103
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5ejix"]
+particle_flag_disable_z = true
+initial_velocity_min = 200.0
+initial_velocity_max = 300.0
+gravity = Vector3(0, 98, 0)
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=944777820]
 script = ExtResource("1_7iwne")
@@ -128,5 +135,13 @@ offset_right = 1128.0
 offset_bottom = 126.0
 text = "213"
 label_settings = SubResource("LabelSettings_5ejix")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=777710837]
+emitting = false
+amount = 15
+texture = ExtResource("5_oap5v")
+lifetime = 0.2
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_5ejix")
 
 [connection signal="area_entered" from="CollectorHitbox" to="." method="_on_collector_hitbox_area_entered"]

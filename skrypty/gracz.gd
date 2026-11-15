@@ -33,6 +33,7 @@ var collected_gems_now: int = 0
 @onready var lvl_panel_label: Label = $CanvasLayer/Panel/Label
 @onready var lvl_panel: Panel = $CanvasLayer/Panel
 @onready var anim_player: AnimationPlayer = $CanvasLayer/Panel/AnimationPlayer
+@onready var hit_particles: GPUParticles2D = $GPUParticles2D
 
 func _ready() -> void:
 	lvl_panel_label.text = "level" + str(Global.lvl_number)
@@ -143,6 +144,12 @@ func handle_collision(collision: KinematicCollision2D) -> void:
 	var normal = collision.get_normal()
 	velocity = velocity.bounce(normal) * 0.85
 	play_squash_animation(normal)
+	print("Uderzenie w ścianę! Odpalam cząsteczki.")
+	if hit_particles:
+		hit_particles.global_position = collision.get_position()
+		hit_particles.rotation = normal.angle()
+		hit_particles.restart()
+		hit_particles.emitting = true
 
 func _on_collector_hitbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("gems"):
