@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bho1jq6uwoxw"]
+
+[ext_resource type="Texture2D" uid="uid://dpgcg5bu3kcgh" path="res://assety/game/gem.png" id="1_ttf8c"]
+[ext_resource type="Script" uid="uid://hd5aisly2s8g" path="res://sceny/cpu_particles_2d.gd" id="2_aneia"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_aneia"]
+particle_flag_disable_z = true
+initial_velocity_min = 200.0
+initial_velocity_max = 300.0
+gravity = Vector3(0, 98, 0)
+
+[node name="CPUParticles2D" type="GPUParticles2D" unique_id=1189460067]
+emitting = false
+amount = 30
+texture = ExtResource("1_ttf8c")
+lifetime = 0.5
+one_shot = true
+fixed_fps = 0
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_aneia")
+script = ExtResource("2_aneia")

@@ -140,7 +140,7 @@ label_settings = SubResource("LabelSettings_5ejix")
 emitting = false
 amount = 15
 texture = ExtResource("5_oap5v")
-lifetime = 0.2
+lifetime = 0.15000000000000002
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_5ejix")
 
