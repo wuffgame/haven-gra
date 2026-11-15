@@ -30,7 +30,7 @@ offset_bottom = 645.0
 text = "Thanks for
 playing
 made by
-wuff, kocio07 and PriXy"
+wuff, kocio and PriXy"
 label_settings = SubResource("LabelSettings_fq6lt")
 horizontal_alignment = 1
 vertical_alignment = 1
