@@ -4,6 +4,7 @@ enum State { AIMING, MOVING, GAME_OVER }
 var current_state = State.MOVING
 
 const GEM_PARTICLES_SCENE = preload("res://sceny/cpu_particles_2d.tscn")
+const MAX_LEVELS = 9
 
 @export var max_drag_distance: float = 220.0
 @export var max_power: float = 1400.0
@@ -222,8 +223,9 @@ func update_gems() -> void:
 		collected_gems = collected_gems + collected_gems_now
 		Global.collected_gems = collected_gems
 		Global.lvl_number += 1
-		var _next_scene = "res://sceny/lvl_" + str(Global.lvl_number) + ".tscn"
-		if FileAccess.file_exists(_next_scene):
+		
+		if Global.lvl_number <= MAX_LEVELS:
+			var _next_scene = "res://sceny/lvl_" + str(Global.lvl_number) + ".tscn"
 			get_tree().change_scene_to_file(_next_scene)
 		else:
 			get_tree().change_scene_to_file("res://sceny/Thx_for_play.tscn")
