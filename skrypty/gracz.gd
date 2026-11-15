@@ -52,10 +52,10 @@ func _ready() -> void:
 	if gam_label:
 		gam_label.text = str(collected_gems)
 	
-	call_deferred("count_gems_on_level")
+	#call_deferred("count_gems_on_level")
 
-func count_gems_on_level() -> void:
-	total_gems = get_tree().get_nodes_in_group("gems").size()
+#func count_gems_on_level() -> void:
+	#total_gems = get_tree().get_nodes_in_group("gems").size()
 
 func create_aim_dots() -> void:
 	for i in range(8):
