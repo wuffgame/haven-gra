@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-enum State { AIMING, MOVING }
+enum State { AIMING, MOVING, GAME_OVER }
 var current_state = State.MOVING
 
 @export var max_drag_distance: float = 220.0
@@ -68,6 +68,8 @@ func create_aim_dots() -> void:
 		dots.append(dot)
 
 func _unhandled_input(event: InputEvent) -> void:
+	if current_state == State.GAME_OVER:
+		return
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
 			current_state = State.AIMING
@@ -115,7 +117,8 @@ func shoot() -> void:
 	if pull_ratio > 0.05:
 		velocity = launch_vector.normalized() * (pull_ratio * max_power)
 		update_moves()
-	current_state = State.MOVING
+	if current_state != State.GAME_OVER:
+		current_state = State.MOVING
 
 func hide_aim_visuals() -> void:
 	drag_line.visible = false
@@ -152,6 +155,8 @@ func _on_collector_hitbox_area_entered(area: Area2D) -> void:
 		gem_tween.chain().tween_callback(area.queue_free)
 
 func _physics_process(delta: float) -> void:
+	if current_state == State.GAME_OVER:
+		return
 	if current_state == State.MOVING:
 		velocity.y += gravity * delta
 		var collision = move_and_collide(velocity * delta)
@@ -169,10 +174,21 @@ func _physics_process(delta: float) -> void:
 			handle_collision(collision)
 			
 func update_moves() -> void:
+	print(current_moves)
 	current_moves -= 1
 	move_label.text = str(current_moves - 1) + "/" + str(max_moves - 1)
 	if current_moves <= 0:
+		move_label.text =  "0/" + str(max_moves - 1)
+		current_state = State.GAME_OVER
+		hide_aim_visuals()
+
+		lvl_panel_label.text = "no moves"
+		anim_player.play("show_lvl_baner")
+
+		await anim_player.animation_finished
+
 		get_tree().reload_current_scene()
+	print(current_moves)
 
 func update_gems() -> void:
 	gam_label.text = str(collected_gems + collected_gems_now)
@@ -181,4 +197,7 @@ func update_gems() -> void:
 		Global.collected_gems = collected_gems
 		Global.lvl_number += 1
 		var _next_scene = "res://sceny/lvl_" + str(Global.lvl_number) + ".tscn"
-		get_tree().change_scene_to_file(_next_scene)
+		if FileAccess.file_exists(_next_scene):
+			get_tree().change_scene_to_file(_next_scene)
+		else:
+			get_tree().change_scene_to_file("res://sceny/Thx_for_play.tscn")

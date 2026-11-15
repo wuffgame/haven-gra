@@ -87,18 +87,19 @@ shape = SubResource("CircleShape2D_k7ey5")
 [node name="Panel" type="Panel" parent="CanvasLayer" unique_id=554912656]
 offset_left = 424.0
 offset_top = 68.0
-offset_right = 707.0
-offset_bottom = 143.0
+offset_right = 787.0
+offset_bottom = 149.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_5texa")
 
 [node name="Label" type="Label" parent="CanvasLayer/Panel" unique_id=1109220792]
 layout_mode = 0
 offset_left = 13.0
 offset_top = 1.0
-offset_right = 291.0
+offset_right = 363.0
 offset_bottom = 116.0
 text = "level 1"
 label_settings = SubResource("LabelSettings_rj0fo")
+horizontal_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Panel" unique_id=926625056]
 libraries/ = SubResource("AnimationLibrary_oap5v")

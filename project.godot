@@ -13,6 +13,7 @@ config_version=5
 config/name="haven-gra"
 run/main_scene="uid://dkgwewbsy4jnh"
 config/features=PackedStringArray("4.7", "Forward Plus")
+boot_splash/show_image=false
 config/icon="res://icon.svg"
 
 [autoload]

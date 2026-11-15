@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://c2k7a2x7eyp1s"]
+
+[ext_resource type="FontFile" uid="uid://cyvtx8cldexhl" path="res://assety/fonts/augiepixel.ttf" id="1_2jxpb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fq6lt"]
+font = ExtResource("1_2jxpb")
+font_size = 114
+font_color = Color(0, 0, 0, 1)
+
+[node name="Safe_exit" type="Control" unique_id=1033913457]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1651422527]
+layout_mode = 0
+offset_left = -25.0
+offset_top = -15.0
+offset_right = 1172.0
+offset_bottom = 680.0
+
+[node name="Main name" type="Label" parent="." unique_id=1890045397]
+layout_mode = 0
+offset_top = -15.0
+offset_right = 1157.0
+offset_bottom = 645.0
+text = "Thanks for
+playing
+made by
+wuff, kocio07 and PriXy"
+label_settings = SubResource("LabelSettings_fq6lt")
+horizontal_alignment = 1
+vertical_alignment = 1
