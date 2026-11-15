@@ -30,13 +30,18 @@ var collected_gems_now: int = 0
 @onready var camera: Camera2D = $Camera2D
 @onready var gam_label: Label = $CanvasLayer/HBoxContainer/ilosc_gemow
 @onready var move_label: Label = $CanvasLayer/ilosc_ruchow
+@onready var lvl_panel_label: Label = $CanvasLayer/Panel/Label
+@onready var lvl_panel: Panel = $CanvasLayer/Panel
+@onready var anim_player: AnimationPlayer = $CanvasLayer/Panel/AnimationPlayer
 
 func _ready() -> void:
+	lvl_panel_label.text = "level" + str(Global.lvl_number)
+	anim_player.play("show_lvl_baner")
 	drag_line.visible = false
 	create_aim_dots()
 	original_scale = scale
 	velocity = Vector2(400, -300)
-	
+
 	await get_tree().create_timer(0.01).timeout
 	if Global:
 		max_moves = Global.max_moves
