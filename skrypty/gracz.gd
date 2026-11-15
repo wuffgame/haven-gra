@@ -11,6 +11,10 @@ const GEM_PARTICLES_SCENE = preload("res://sceny/cpu_particles_2d.tscn")
 @export var aiming_slowmo_factor: float = 0.12
 @export var slowmo_duration: float = 3.0
 
+@onready var boing: AudioStreamPlayer2D = $boing
+@onready var coin: AudioStreamPlayer2D = $coin
+
+
 @export var normal_zoom: Vector2 = Vector2(1.0, 1.0)
 @export var max_aim_zoom: Vector2 = Vector2(1.5, 1.5)
 @export var zoom_speed: float = 10.0
@@ -149,6 +153,7 @@ func play_squash_animation(hit_normal: Vector2) -> void:
 func handle_collision(collision: KinematicCollision2D) -> void:
 	var normal = collision.get_normal()
 	velocity = velocity.bounce(normal) * 0.85
+	boing.play()
 	play_squash_animation(normal)
 	if hit_particles:
 		hit_particles.global_position = collision.get_position()
@@ -159,7 +164,7 @@ func handle_collision(collision: KinematicCollision2D) -> void:
 func _on_collector_hitbox_area_entered(area: Area2D) -> void:
 	if not is_instance_valid(area) or not area.is_in_group("gems"):
 		return
-		
+	coin.play()
 	collected_gems_now += 1
 	update_gems()
 	

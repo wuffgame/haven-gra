@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://ub8plajlnohf"]
+
+[ext_resource type="AudioStream" uid="uid://d2kj485p5kavh" path="res://assety/Boiler.wav" id="1_bmufi"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" unique_id=1690071649]
+stream = ExtResource("1_bmufi")
+volume_db = 13.209
+autoplay = true

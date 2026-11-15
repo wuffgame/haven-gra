@@ -5,6 +5,8 @@
 [ext_resource type="FontFile" uid="uid://cyvtx8cldexhl" path="res://assety/fonts/augiepixel.ttf" id="3_8in0d"]
 [ext_resource type="Texture2D" uid="uid://dpgcg5bu3kcgh" path="res://assety/game/gem.png" id="4_l1edu"]
 [ext_resource type="Texture2D" uid="uid://cckpnjuo1vb4p" path="res://assety/game/particle.png" id="5_oap5v"]
+[ext_resource type="AudioStream" uid="uid://b12f1dk2yyctv" path="res://assety/boing-sound-effect_x6lnKIdn.mp3" id="6_yoavk"]
+[ext_resource type="AudioStream" uid="uid://bghmimago4ckv" path="res://assety/main_menu/driken5482-retro-coin-4-236671.mp3" id="7_xr68n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_epuwg"]
 radius = 17.0
@@ -143,5 +145,13 @@ texture = ExtResource("5_oap5v")
 lifetime = 0.15000000000000002
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_5ejix")
+
+[node name="boing" type="AudioStreamPlayer2D" parent="." unique_id=372069575]
+stream = ExtResource("6_yoavk")
+volume_db = 6.298
+
+[node name="coin" type="AudioStreamPlayer2D" parent="." unique_id=1601897496]
+stream = ExtResource("7_xr68n")
+volume_db = 6.298
 
 [connection signal="area_entered" from="CollectorHitbox" to="." method="_on_collector_hitbox_area_entered"]

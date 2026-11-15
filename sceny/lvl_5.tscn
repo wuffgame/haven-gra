@@ -45,7 +45,8 @@ sources/0 = SubResource("TileSetAtlasSource_wt4od")
 size = Vector2(68, 249)
 
 [sub_resource type="Animation" id="Animation_axh2e"]
-length = 0.001
+length = 1.5
+step = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -135,6 +136,7 @@ shape = SubResource("RectangleShape2D_f6xyr")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="StaticBody2D" unique_id=1178941642]
 libraries/ = SubResource("AnimationLibrary_wt4od")
 autoplay = &"rotation"
+speed_scale = 0.635
 
 [node name="CharacterBody2D" parent="." unique_id=944777820 instance=ExtResource("3_axh2e")]
 position = Vector2(0, 205)
