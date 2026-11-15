@@ -151,8 +151,8 @@ func _on_collector_hitbox_area_entered(area: Area2D) -> void:
 		
 		
 		var gem_tween = create_tween().set_parallel(true)
-		gem_tween.tween_property(area, "scale", Vector2(1.5, 1.5), 0.15)
-		gem_tween.tween_property(area, "modulate:a", 0.0, 0.15)
+		gem_tween.tween_property(area, "scale", Vector2(1.5, 1.5), 0.1)
+		gem_tween.tween_property(area, "modulate:a", 0.0, 0.1)
 		gem_tween.chain().tween_callback(area.queue_free)
 
 func _physics_process(delta: float) -> void:
